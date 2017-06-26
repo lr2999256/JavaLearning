@@ -2,6 +2,7 @@ package com.learn.common.export;
 
 import com.learn.common.export.excel.ExcelDataExportor;
 import com.learn.common.export.excel.MODE;
+import com.learn.common.export.txt.TxtDataExportor;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -32,6 +33,8 @@ public class TestExport {
             }
         };
         FileOutputStream fileOutputStream = new FileOutputStream("C:\\zjims\\a.xls");
-        new ExcelDataExportor(dataFields,exportDataSource,fileOutputStream, MODE.EXCEL).export();
+//        new ExcelDataExportor(dataFields,exportDataSource,fileOutputStream, MODE.EXCEL).export();
+        FileOutputStream outputStream = new FileOutputStream("C:\\zjims\\a.txt");
+        new TxtDataExportor<Object>(dataFields,exportDataSource,outputStream).export();
     }
 }

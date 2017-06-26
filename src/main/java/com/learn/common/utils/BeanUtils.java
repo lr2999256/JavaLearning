@@ -56,6 +56,17 @@ public class BeanUtils {
 
 	}
 
+//	public static <T,Y> void copyProperties(T t, Y y) {
+//		if (t != null) {
+//			String beanKey = generateKey(t.getClass(), y.getClass());
+//			if (!beanCopierMap.containsKey(beanKey)) {
+//				BeanCopier copier = BeanCopier.create(t.getClass(), y.getClass(), false);
+//				beanCopierMap.put(beanKey, copier);
+//			}
+//			beanCopierMap.get(beanKey).copy(t, y, null);
+//		}
+//	}
+
 	/**
 	 * 对象赋值
 	 * 
