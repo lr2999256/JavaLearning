@@ -1,6 +1,7 @@
 package com.learn.common.utils;
 
-import java.io.File;
+import java.io.*;
+
 /**
  * 文件工具类
  * @author Peter
@@ -33,5 +34,28 @@ public class FileUtils {
 		if(!file.exists()){
 				file.mkdir();
 		}
+	}
+
+	public static void writeAppend(String content,String filePath) throws Exception{
+		FileWriter fw=null;
+		try{
+			fw = new FileWriter(filePath,true);
+			fw.write(content);
+			fw.close();
+		}catch (IOException e){
+			throw e;
+		}finally {
+			try {
+				if(null!=fw){
+					fw.close();
+				}
+			}catch (IOException e2){
+			}
+		}
+	}
+
+	public static void main(String args[]) throws Exception{
+		writeAppend("abc","E:\\chkfile\\test.txt");
+		writeAppend("der\n","E:\\chkfile\\test.txt");
 	}
 }

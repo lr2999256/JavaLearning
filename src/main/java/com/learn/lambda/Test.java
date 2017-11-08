@@ -10,7 +10,30 @@ import javax.sound.midi.ControllerEventListener;
 
 public class Test {
 
+    public static boolean isSuccess(String msgCd){
+        String lastNo = msgCd.substring(msgCd.length()-5,msgCd.length());
+        if("00000".equals(lastNo)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public static void main(String[] args) throws InterruptedException {
+
+        boolean ste = isSuccess("GTS00678");
+
+        String testStr = "ordNo|ordAmt|";
+        String splitStr = "\\|";
+        String[] splitStrs = testStr.split(splitStr);
+        int index = 0;
+        for(String tmp : splitStrs){
+            if("dd".equals(tmp)){
+                break;
+            }
+            index++;
+        }
+        System.out.print("==========="+index);
 //        new Thread(()-> System.out.println("1"));
         new Thread(()->System.out.println("too much code, for too little to do")).start();;
         // Java 8之前：
