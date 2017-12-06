@@ -14,6 +14,10 @@ public class Product {
 
     private BigDecimal amt;
 
+    public Product(){
+
+    }
+
     public Product(int id, String type, BigDecimal amt) {
         this.id = id;
         this.type = type;
