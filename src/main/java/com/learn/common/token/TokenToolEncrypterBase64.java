@@ -1,6 +1,7 @@
 package com.learn.common.token;
 
 import java.io.IOException;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -19,7 +20,6 @@ import sun.misc.BASE64Encoder;
 public class TokenToolEncrypterBase64 implements TokenBaseInter {
 
 	private static final Log logger = LogFactory.getLog(TokenToolEncrypterBase64.class);
-
 	@SuppressWarnings("restriction")
 	private static BASE64Encoder encoder = new BASE64Encoder();
 

@@ -1,8 +1,13 @@
 package com.learn.lambda;
 
-import java.util.Arrays; 
-import java.util.List; 
-import java.util.Map; 
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 public class LambdaMapReduce {
@@ -16,7 +21,7 @@ public class LambdaMapReduce {
         //与stream.reduce方法不同，Stream.collect修改现存的值，而不是每处理一个元素，创建一个新值 
         //获取所有男性用户的平均年龄 
         double maleagv = users.stream().filter(s->s.getGender().equals(User.Sex.MALE)).mapToDouble(User::getAge).average().getAsDouble();
-
+        List<User> matchList = users.stream().filter(u->u.getName().equals("张三")).collect(Collectors.toList());
         //获取年龄大于12的用户列表 
         List<User> list = users.stream().filter(s -> s.getAge() > 12).collect(Collectors.toList());
         //按性别统计用户数
@@ -29,6 +34,14 @@ public class LambdaMapReduce {
                                 Collectors.mapping(User::getName,
                                         Collectors.toList())));
         System.out.println(map1);
+        Button button = new Button();
+        list.sort(Comparator.comparing(User::getAge));
+        list.replaceAll(user ->  user.getAge() == 32 ? user : null );
+        list.forEach(user -> System.out.print(user.getAge()));
+        ActionListener oneArgument = event -> System.out.println("button clicked");
+        button.addActionListener(oneArgument);
+        BinaryOperator<Long> longLongObjectBiFunction = (Long x, Long y) -> x + y;
+        Runnable aaa= () -> System.out.println("Hello World");
         //按性别求年龄的总和 
         Map<User.Sex, Integer> map2 = users.stream()
                 .collect(

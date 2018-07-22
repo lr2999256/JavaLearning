@@ -3,14 +3,18 @@ package com.learn;
 import com.learn.lambda.Product;
 import com.learn.proxy.ITest;
 import com.learn.proxy.ProxyFactory;
+import com.learn.proxy.Singletance;
 import com.learn.proxy.TestImpl;
 import org.junit.Test;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
+import java.util.Base64;
 import java.util.Properties;
 
 /**
@@ -23,6 +27,74 @@ public class ApplicationTest {
     @Test
     public void test1(){
 
+        String mblNo =  "+86-787058105";
+        String tmp[] = mblNo.split("-");
+        String mblNoLast = "";
+        if(tmp.length > 1 ){
+            mblNoLast = tmp[1];
+        }else{
+        }
+
+        Base64.getEncoder().encode("abc".getBytes());
+
+        //如果是1打头，发给cps时加上前缀86,如果是其他6/7打头，加上255
+        if(mblNoLast.startsWith("1")){
+            mblNo = "86"+mblNoLast;
+        }else if(mblNoLast.startsWith("6")||mblNoLast.startsWith("7")){
+            mblNo ="255"+mblNoLast;
+        }else {
+            mblNo ="";
+        }
+
+
+        String shortCode = "";
+        String mercId = "8888880000018505";
+        if(mercId.length()>6){
+            shortCode = "6"+mercId.substring(mercId.length()-6,mercId.length());
+        }else{
+            shortCode = "6"+mercId;
+        }
+
+//        mblNo = "86"+adc;
+        String addr = "jinBian_";
+        String abc[] = addr.split("_",-1);
+
+        String str1 = "a  b     c  d e f      g";
+
+        String [] arr = str1.split("\\s+");
+        for(String ss : arr){
+            System.out.println(ss);
+        }
+
+
+//        Constructor constructor = new Constructor(TestImpl.class);
+//        try {
+//            constructor.newInstance();
+//        } catch (InstantiationException e) {
+//            e.printStackTrace();
+//        } catch (IllegalAccessException e) {
+//            e.printStackTrace();
+//        } catch (InvocationTargetException e) {
+//            e.printStackTrace();
+//        }
+
+        BigDecimal a = BigDecimal.valueOf(50);
+        if(a.compareTo(BigDecimal.valueOf(5))==-1){
+            System.out.print("abc");
+        }else if(a.compareTo(BigDecimal.valueOf(10))>=0&&a.compareTo(BigDecimal.valueOf(20))<=0){
+            System.out.print("abc");
+        }else {
+            System.out.print("abc");
+        }
+
+        Singletance singletance = Singletance.getSingletan();
+
+
+        try {
+            BigDecimal balAmt = new BigDecimal("abc");
+        }catch (Exception e){
+
+        }
         System.out.println(System.getProperty("user.dir"));
 
         System.out.println(System.getProperty("line.separator"));
@@ -30,8 +102,8 @@ public class ApplicationTest {
         Properties properties = System.getProperties();
 
         properties.entrySet().forEach((entry)-> {
-            int a=0;
-            System.out.println(a);
+            int a1=0;
+            System.out.println(a1);
             System.out.println("k:" + entry.getKey() + "========v:" + entry.getValue());
         });
 
